@@ -50,6 +50,7 @@ function checkGuess(guess) {
   if (guess === randomNumber) {
     displayMessage(`You guessed correctly!`);
     endGame();
+
   } else if (guess < randomNumber) {
     displayMessage(`Too low! Try again!`);
   } else if (guess > randomNumber) {
@@ -99,5 +100,22 @@ function newGame() {
 //Allow to restart game with restart button
 //Change DIV to a form so it can accept the enter key
 
+const timer = document.getElementById("timer");
+
+const handleTimer = () => {
+  remainingTime--
+  timer.textContent = remainingTime;
+  if (remainingTime == 0) {
+    displayMessage("Time's up!");
+    endGame();
+    clearInterval(interval);
+  } 
+
+}
+
+const interval = setInterval(handleTimer, 1000);
+
+
 //NOTES:
 //NaN != NaN
+
