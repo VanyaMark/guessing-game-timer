@@ -79,6 +79,8 @@ function endGame() {
   p.innerHTML = `<h1 id="newGame">Start New Game</h1>`
   startOver.appendChild(p);
   playGame = false;
+
+  clearInterval(interval)
   newGame();
 }
 
@@ -95,6 +97,8 @@ function newGame() {
     userInput.removeAttribute('disabled');
     startOver.removeChild(p);
     playGame = true;
+    remainingTime = 30;
+    interval = setInterval(handleTimer, 1000);
   })
 }
 //Allow to restart game with restart button
@@ -113,7 +117,7 @@ const handleTimer = () => {
 
 }
 
-const interval = setInterval(handleTimer, 1000);
+let interval = setInterval(handleTimer, 1000);
 
 
 //NOTES:
